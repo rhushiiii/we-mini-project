@@ -101,56 +101,55 @@ export default function ExplorePage() {
 
   return (
     <PageLayout>
-      <section className="container-weird pt-[34px] sm:pt-[48px]">
-        <div className="grid items-start gap-8 xl:grid-cols-[306px_1fr]">
-          <FilterPanel
-            format={format}
-            formatOptions={filters.formats}
-            setFormat={(next) => {
-              setFormat(next);
-              setPage(1);
-            }}
-            setTheme={(next) => {
-              setTheme(next);
-              setPage(1);
-            }}
-            setVibe={(next) => {
-              setVibe(next);
-              setPage(1);
-            }}
-            theme={theme}
-            themeOptions={filters.themes}
-            vibe={vibe}
-            vibeOptions={filters.vibes}
-          />
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-1">
+            <FilterPanel
+              format={format}
+              formatOptions={filters.formats}
+              setFormat={(next) => {
+                setFormat(next);
+                setPage(1);
+              }}
+              setTheme={(next) => {
+                setTheme(next);
+                setPage(1);
+              }}
+              setVibe={(next) => {
+                setVibe(next);
+                setPage(1);
+              }}
+              theme={theme}
+              themeOptions={filters.themes}
+              vibe={vibe}
+              vibeOptions={filters.vibes}
+            />
+          </div>
 
-          <section>
-            <div className="rough-panel relative ml-auto max-w-[900px] rotate-[-1.1deg] bg-white p-[18px] sm:p-[24px]">
-              <span className="tape right-[72px] top-0 hidden md:block" />
-              <p className="section-kicker">Main search, intentionally not centered</p>
-              <h1 className="mt-3 max-w-[11ch] text-[clamp(2.7rem,8vw,5.6rem)] font-bold leading-[0.9] tracking-[-0.08em]">
-                Find the one worth losing sleep for.
+          <div className="lg:col-span-3">
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold tracking-tight text-white mb-4">
+                Explore Hackathons
               </h1>
-              <p className="mt-3 max-w-[37rem] text-[1rem] leading-8 text-ink/78">
-                Search by theme, panic level, or that fuzzy feeling of “I think our team could
-                actually pull this off.”
+              <p className="text-gray-400 mb-6">
+                Search by theme, format, or technology to find your next project.
               </p>
 
-              <div className="mt-5 grid gap-4 lg:grid-cols-[1fr_auto]">
+              <div className="flex flex-col sm:flex-row gap-4 mb-4">
                 <input
-                  className="min-h-[70px] border-4 border-ink bg-[#fff8ee] px-[17px] text-[1rem] outline-none placeholder:text-ink/40"
+                  className="input-field flex-grow"
                   onChange={(event) =>
                     startTransition(() => {
                       setQuery(event.target.value);
                       setPage(1);
                     })
                   }
-                  placeholder='Search "AI", "frontend", "Bengaluru", or "easy win"'
+                  placeholder='Search "AI", "frontend", or "remote"'
                   type="text"
                   value={query}
                 />
                 <button
-                  className="rough-button-dark min-h-[70px]"
+                  className="btn-secondary whitespace-nowrap"
                   onClick={() => {
                     setQuery("");
                     setTheme("All");
@@ -160,17 +159,15 @@ export default function ExplorePage() {
                   }}
                   type="button"
                 >
-                  reset chaos
+                  Clear Filters
                 </button>
               </div>
 
-              <div className="mt-5 flex flex-wrap gap-3">
-                {["easy win", "mentor-heavy", "irl", "DevTools", "AI"].map((chip, index) => (
+              <div className="flex flex-wrap gap-2">
+                {["easy win", "mentor-heavy", "irl", "DevTools", "AI"].map((chip) => (
                   <button
-                    className={`border-2 border-ink px-[11px] py-[9px] font-mono text-[11px] font-bold uppercase tracking-[0.14em] transition hover:-translate-y-[2px] ${
-                      index % 2 === 0 ? "rotate-[-1deg] bg-butter" : "rotate-[1deg] bg-paper"
-                    }`}
                     key={chip}
+                    className="inline-flex items-center px-3 py-1 bg-transparent border border-gray-800 text-gray-400 hover:border-gray-500 hover:text-white transition-colors"
                     onClick={() =>
                       startTransition(() => {
                         setQuery(chip);
@@ -185,87 +182,102 @@ export default function ExplorePage() {
               </div>
             </div>
 
-            <div className="mt-6 flex flex-wrap items-center gap-4">
-              <div className="mini-note rotate-[-1deg] bg-white">
-                {meta.total} hunts still look alive
-              </div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink/58">
-                Sorted by “would I send this to a teammate?”
+            <div className="mb-6 flex items-center justify-between">
+              <p className="text-sm text-gray-500">
+                Showing <span className="font-bold text-white">{meta.total}</span> results
               </p>
-              <Link className="rough-button" to="/calendar">
-                open deadline wall
+              <Link className="text-sm font-bold text-white hover:text-gray-400 transition-colors" to="/calendar">
+                View on Calendar &rarr;
               </Link>
             </div>
 
             {loading ? (
-              <div className="rough-panel mt-8 max-w-[38rem] rotate-[-0.4deg] bg-white p-[22px]">
-                <p className="section-kicker">Loading</p>
-                <h2 className="mt-3 text-[2.3rem] font-bold leading-[0.95] tracking-[-0.06em]">
-                  Pulling fresh listings.
-                </h2>
-                <p className="mt-3 max-w-[30rem] text-[0.98rem] leading-7 text-ink/76">
-                  Grabbing the latest data from the aggregator feeds.
-                </p>
+              <div className="card p-8 text-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+                <h2 className="text-xl font-bold text-white mb-2">Loading...</h2>
+                <p className="text-gray-500">Fetching the latest hackathons.</p>
               </div>
             ) : error ? (
-              <div className="rough-panel mt-8 max-w-[38rem] rotate-[1deg] bg-cherry p-[22px] text-paper">
-                <p className="section-kicker text-paper/70">Data unavailable</p>
-                <h2 className="mt-3 text-[2.3rem] font-bold leading-[0.95] tracking-[-0.06em]">{error}</h2>
+              <div className="card p-8 text-center border-red-900">
+                <h2 className="text-xl font-bold text-white mb-2">Error</h2>
+                <p className="text-gray-400">{error}</p>
               </div>
             ) : hackathons.length ? (
               <>
-                <div className="mt-8 columns-1 gap-6 md:columns-2 2xl:columns-3">
-                  {hackathons.map((item, index) => (
+                <div className="grid gap-6 md:grid-cols-2">
+                  {hackathons.map((item) => (
                     <HackCard
-                      ctaLabel={index % 3 === 0 ? "save spot" : "peek inside"}
-                      className={
-                        index % 4 === 1 ? "md:mt-[54px]" : index % 4 === 3 ? "md:mt-[26px]" : ""
-                      }
+                      ctaLabel="View Details"
                       item={item}
                       key={item.slug ?? item.title}
                     />
                   ))}
                 </div>
 
-                {meta.totalPages > 1 ? (
-                  <div className="mt-8 flex items-center gap-3">
-                    <button
-                      className="rough-button"
-                      disabled={page <= 1}
-                      onClick={() => setPage((value) => Math.max(1, value - 1))}
-                      type="button"
-                    >
-                      previous page
-                    </button>
-                    <span className="mini-note bg-paper">
-                      page {meta.page} / {meta.totalPages}
-                    </span>
-                    <button
-                      className="rough-button-dark"
-                      disabled={page >= meta.totalPages}
-                      onClick={() => setPage((value) => Math.min(meta.totalPages, value + 1))}
-                      type="button"
-                    >
-                      next page
-                    </button>
+                {meta.totalPages > 1 && (
+                  <div className="mt-8 flex items-center justify-between border-t border-gray-800 bg-black px-4 py-3 sm:px-6 rounded-none">
+                    <div className="flex flex-1 justify-between sm:hidden">
+                      <button
+                        onClick={() => setPage((value) => Math.max(1, value - 1))}
+                        disabled={page <= 1}
+                        className="btn-secondary"
+                      >
+                        Previous
+                      </button>
+                      <button
+                        onClick={() => setPage((value) => Math.min(meta.totalPages, value + 1))}
+                        disabled={page >= meta.totalPages}
+                        className="btn-secondary"
+                      >
+                        Next
+                      </button>
+                    </div>
+                    <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                      <div>
+                        <p className="text-sm text-gray-500">
+                          Showing page <span className="font-bold text-white">{meta.page}</span> of{' '}
+                          <span className="font-bold text-white">{meta.totalPages}</span>
+                        </p>
+                      </div>
+                      <div>
+                        <nav className="isolate inline-flex -space-x-px" aria-label="Pagination">
+                          <button
+                            onClick={() => setPage((value) => Math.max(1, value - 1))}
+                            disabled={page <= 1}
+                            className="relative inline-flex items-center px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-800 hover:bg-gray-900 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
+                          >
+                            <span className="sr-only">Previous</span>
+                            &larr;
+                          </button>
+                          <button
+                            onClick={() => setPage((value) => Math.min(meta.totalPages, value + 1))}
+                            disabled={page >= meta.totalPages}
+                            className="relative inline-flex items-center px-3 py-2 text-gray-400 ring-1 ring-inset ring-gray-800 hover:bg-gray-900 focus:z-20 focus:outline-offset-0 disabled:opacity-50"
+                          >
+                            <span className="sr-only">Next</span>
+                            &rarr;
+                          </button>
+                        </nav>
+                      </div>
+                    </div>
                   </div>
-                ) : null}
+                )}
               </>
             ) : (
-              <div className="rough-panel mt-8 max-w-[38rem] rotate-[1deg] bg-cherry p-[22px] text-paper">
-                <p className="section-kicker text-paper/70">No match</p>
-                <h2 className="mt-3 text-[2.3rem] font-bold leading-[0.95] tracking-[-0.06em]">
-                  Nothing fits that exact mood.
-                </h2>
-                <p className="mt-3 max-w-[30rem] text-[0.98rem] leading-7 text-paper/80">
-                  Try clearing a filter or searching for a broader word like “AI”, “remote”, or
-                  “frontend”. The board is chaotic, not magical.
+              <div className="card p-8 text-center">
+                <h2 className="text-xl font-bold text-white mb-2">No matches found</h2>
+                <p className="text-gray-400">
+                  Try clearing some filters or searching for different keywords.
                 </p>
               </div>
             )}
-          </section>
+          </div>
         </div>
-      </section>
+      </div>
     </PageLayout>
   );
 }
+
+
+
+

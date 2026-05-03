@@ -4,57 +4,40 @@ import { calendarDays, calendarHighlights } from "../data/siteData";
 
 const daysOfWeek = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-const toneClasses = {
-  sky: "bg-sky",
-  butter: "bg-butter",
-  mint: "bg-mint",
-  cherry: "bg-cherry text-paper",
-  peach: "bg-[#ffd7c8]"
-};
-
 export default function CalendarPage() {
   return (
     <PageLayout>
-      <section className="container-weird pt-[34px] sm:pt-[48px]">
-        <div className="grid items-start gap-8 xl:grid-cols-[1.1fr_0.9fr]">
-          <section>
-            <div className="rough-panel rotate-[-1deg] bg-white p-[18px] sm:p-[24px]">
-              <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="lg:col-span-3">
+            <section className="card p-6 sm:p-8">
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
                 <div>
-                  <p className="section-kicker">Deadline wall</p>
-                  <h1 className="mt-3 text-[clamp(2.8rem,7vw,5.6rem)] font-bold leading-[0.9] tracking-[-0.08em]">
+                  <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">Deadline Wall</p>
+                  <h1 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
                     April 2026
                   </h1>
-                  <p className="mt-2 max-w-[31rem] text-[1rem] leading-8 text-ink/76">
-                    Use this when your brain wants one place to scream “oh right, that closes on
-                    Thursday.”
+                  <p className="mt-2 text-gray-400 max-w-2xl">
+                    Use this when your brain wants one place to see all the closing dates.
                   </p>
-                </div>
-
-                <div className="mini-note rotate-[1.4deg] bg-butter">
-                  important dates, less fake urgency
                 </div>
               </div>
 
-              <div className="mt-7 grid grid-cols-7 gap-3">
-                {daysOfWeek.map((day, index) => (
+              <div className="grid grid-cols-7 gap-px bg-gray-800 border border-gray-800">
+                {daysOfWeek.map((day) => (
                   <div
-                    className={`border-4 border-ink px-2 py-3 text-center font-mono text-[11px] font-bold uppercase tracking-[0.18em] ${
-                      index % 2 === 0 ? "bg-[#fff8ee]" : "bg-sand"
-                    }`}
+                    className="bg-black py-2 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider"
                     key={day}
                   >
                     {day}
                   </div>
                 ))}
-              </div>
 
-              <div className="mt-3 grid grid-cols-7 gap-3">
                 {calendarDays.map((entry, index) => {
                   if (entry.ghost) {
                     return (
                       <div
-                        className="min-h-[118px] border-4 border-dashed border-ink/20 bg-transparent"
+                        className="bg-black min-h-[120px] p-2"
                         key={`ghost-${index}`}
                       />
                     );
@@ -62,40 +45,31 @@ export default function CalendarPage() {
 
                   const cell = (
                     <div
-                      className={`flex min-h-[118px] flex-col justify-between border-4 border-ink p-[10px] transition duration-150 hover:-translate-y-[2px] ${
+                      className={`bg-black min-h-[120px] p-2 flex flex-col transition-colors ${
                         entry.focus
-                          ? "bg-cherry text-paper"
-                          : entry.tone
-                            ? toneClasses[entry.tone]
-                            : "bg-[#fff8ee]"
-                      } ${index % 2 === 0 ? "rotate-[-0.8deg]" : "rotate-[0.6deg]"}`}
+                          ? "ring-1 ring-inset ring-white hover:bg-gray-900"
+                          : entry.event
+                            ? "hover:bg-gray-900"
+                            : ""
+                      }`}
                     >
-                      <span className="font-mono text-[11px] font-bold uppercase tracking-[0.16em]">
+                      <span className={`text-sm font-semibold ${entry.focus ? 'text-white' : 'text-gray-500'}`}>
                         {entry.day}
                       </span>
 
                       {entry.event ? (
-                        <div>
-                          <p className="font-display text-[1rem] font-bold leading-5">{entry.event}</p>
-                          <p
-                            className={`mt-2 font-mono text-[10px] uppercase tracking-[0.14em] ${
-                              entry.focus ? "text-paper/72" : "text-ink/60"
-                            }`}
-                          >
-                            tap into this before it sneaks past you
+                        <div className="mt-1">
+                          <p className={`text-xs font-medium leading-tight ${entry.focus ? 'text-white' : 'text-gray-400'}`}>
+                            {entry.event}
                           </p>
                         </div>
-                      ) : (
-                        <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink/35">
-                          still quiet
-                        </span>
-                      )}
+                      ) : null}
                     </div>
                   );
 
                   if (entry.focus) {
                     return (
-                      <Link key={entry.day} to="/details">
+                      <Link key={entry.day} to="/details" className="block">
                         {cell}
                       </Link>
                     );
@@ -104,51 +78,47 @@ export default function CalendarPage() {
                   return <div key={entry.day}>{cell}</div>;
                 })}
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
 
-          <aside className="space-y-6">
-            <div className="rough-panel rotate-[2deg] bg-butter p-[18px]">
-              <p className="section-kicker">Pinned note</p>
-              <h2 className="mt-3 max-w-[10ch] text-[2.4rem] font-bold leading-[0.94] tracking-[-0.06em]">
-                Do future-you a favor and shortlist before the last day.
+          <aside className="lg:col-span-1 space-y-6">
+            <div className="card p-6">
+              <h2 className="text-lg font-bold text-white mb-2">
+                Plan Ahead
               </h2>
-              <p className="mt-4 text-[0.98rem] leading-7 text-ink/78">
-                Half the stress comes from remembering the date too late. The other half is team
-                coordination. We can at least help with the first part.
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Half the stress comes from remembering the date too late. Do your future-self a favor and shortlist early.
               </p>
             </div>
 
-            <div className="rough-panel rotate-[-1deg] bg-white p-[18px]">
-              <p className="section-kicker">This month&apos;s loudest dates</p>
-              <div className="mt-4 space-y-4">
-                {calendarHighlights.map((item, index) => (
+            <div className="card p-6">
+              <h2 className="text-lg font-bold text-white mb-4">Upcoming Deadlines</h2>
+              <div className="space-y-4">
+                {calendarHighlights.map((item) => (
                   <article
-                    className={`border-4 border-ink p-[14px] ${
-                      index === 1
-                        ? "rotate-[1deg] bg-sky"
-                        : index === 2
-                          ? "-rotate-[1deg] bg-mint"
-                          : "rotate-[-1deg] bg-[#fff8ee]"
-                    }`}
+                    className="border-l border-white pl-4 py-2"
                     key={item.date}
                   >
-                    <p className="section-kicker">{item.date}</p>
-                    <h3 className="mt-2 text-[1.25rem] font-bold leading-6 tracking-[-0.04em]">
+                    <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">{item.date}</p>
+                    <h3 className="text-sm font-bold text-white">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-[0.94rem] leading-7 text-ink/76">{item.copy}</p>
+                    <p className="mt-1 text-sm text-gray-400 line-clamp-2">{item.copy}</p>
                   </article>
                 ))}
               </div>
 
-              <Link className="rough-button-dark mt-5" to="/details">
-                open featured dossier
+              <Link className="btn-primary w-full mt-6" to="/details">
+                View Featured Hackathon
               </Link>
             </div>
           </aside>
         </div>
-      </section>
+      </div>
     </PageLayout>
   );
 }
+
+
+
+

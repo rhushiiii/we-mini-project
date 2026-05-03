@@ -4,25 +4,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        paper: "#fbf4e8",
-        ink: "#111111",
-        sand: "#f1e2ca",
-        mustard: "#ffc93c",
-        cherry: "#ff6b4a",
-        sky: "#7ac4ff",
-        mint: "#a9d98f",
-        butter: "#ffe588",
-        blush: "#ffc4d6"
+        primary: {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+        },
       },
       fontFamily: {
-        display: ['"Space Grotesk"', "sans-serif"],
-        mono: ['"IBM Plex Mono"', "monospace"]
+        sans: ['Inter', 'sans-serif'],
       },
-      boxShadow: {
-        brutal: "8px 8px 0 #111111",
-        "brutal-sm": "5px 5px 0 #111111",
-        tape: "0 16px 35px rgba(17, 17, 17, 0.14)"
-      }
     }
   },
   plugins: []

@@ -1,15 +1,15 @@
 export const navItems = [
-  { label: "hunt board", to: "/" },
-  { label: "messy search", to: "/explore" },
-  { label: "deadline wall", to: "/calendar" },
-  { label: "save my spots", to: "/auth" }
+  { label: "HOME", to: "/" },
+  { label: "EXPLORE", to: "/explore" },
+  { label: "CALENDAR", to: "/calendar" },
+  { label: "SAVED", to: "/auth" }
 ];
 
 export const landingStats = [
   { label: "Freshly indexed", value: "148", tone: "sky" },
   { label: "Closing this week", value: "31", tone: "cherry" },
-  { label: "Actually beginner-safe", value: "19", tone: "mint" },
-  { label: "Mentor-heavy weirdos", value: "12", tone: "butter" }
+  { label: "Total prize pool", value: "$2.4M", tone: "mint" },
+  { label: "Active builders", value: "4,200+", tone: "butter" }
 ];
 
 export const heroScratchNotes = [

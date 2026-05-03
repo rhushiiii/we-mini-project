@@ -1,33 +1,8 @@
 import { Link } from "react-router-dom";
 
-const toneClasses = {
-  peach: "bg-[#ffd7c8]",
-  mint: "bg-[#d7f4c7]",
-  sky: "bg-[#d2e8ff]",
-  butter: "bg-[#ffe58f]",
-  blush: "bg-[#ffc8d7]",
-  paper: "bg-[#fff8ee]"
-};
-
-const tiltClasses = {
-  left: "md:-rotate-[2.1deg]",
-  right: "md:rotate-[1.9deg]",
-  slightLeft: "md:-rotate-[0.9deg]",
-  slightRight: "md:rotate-[0.8deg]",
-  flat: ""
-};
-
-const stampClasses = {
-  cherry: "bg-cherry text-paper",
-  sky: "bg-sky text-ink",
-  mint: "bg-mint text-ink",
-  butter: "bg-butter text-ink",
-  ink: "bg-ink text-paper"
-};
-
 export default function HackCard({
   item,
-  ctaLabel = "peek inside",
+  ctaLabel = "View Details",
   ctaTo,
   compact = false,
   className = ""
@@ -35,79 +10,71 @@ export default function HackCard({
   const resolvedCtaTo = ctaTo ?? (item.slug ? `/details/${item.slug}` : "/details");
 
   return (
-    <article
-      className={`rough-panel jitter-hover group relative mb-6 break-inside-avoid p-[18px] transition duration-150 hover:-translate-y-1 ${
-        toneClasses[item.tone] || toneClasses.paper
-      } ${tiltClasses[item.tilt] || ""} ${className}`}
-    >
-      <span className="tape left-[22px] top-0 hidden md:block" />
-
-      <div className="flex flex-wrap gap-[7px]">
+    <article className={`card flex flex-col p-6 transition-colors hover:border-gray-500 ${className}`}>
+      <div className="flex flex-wrap gap-2 mb-4">
         {item.tags.map((tag) => (
           <span
             key={tag}
-            className="border-2 border-ink bg-white px-[8px] py-[5px] font-mono text-[10px] font-bold uppercase tracking-[0.12em]"
+            className="inline-flex items-center px-2 py-1 text-xs font-medium border border-gray-800 text-gray-400"
           >
             {tag}
           </span>
         ))}
       </div>
 
-      <div className="mt-4 flex items-start justify-between gap-4">
-        <div className="space-y-2">
-          <p className="section-kicker">{item.host}</p>
-          <h3
-            className={`max-w-[14ch] font-display font-bold leading-[0.92] tracking-[-0.06em] ${
-              compact ? "text-[1.9rem]" : "text-[2.4rem]"
-            }`}
-            >
-              <Link to={resolvedCtaTo}>{item.title}</Link>
-            </h3>
-        </div>
-
-        <span
-          className={`shrink-0 border-4 border-ink px-3 py-[7px] font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${
-            stampClasses[item.stamp] || stampClasses.ink
-          }`}
-        >
+      <div className="flex-1">
+        <p className="text-sm font-medium text-gray-500 mb-1">{item.host}</p>
+        <h3 className={`font-bold text-white mb-3 ${compact ? 'text-xl' : 'text-2xl'}`}>
+          <Link to={resolvedCtaTo} className="hover:text-gray-300 transition-colors">
+            {item.title}
+          </Link>
+        </h3>
+        
+        <div className="text-sm font-medium text-gray-300 mb-4 flex items-center gap-2">
+          <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
           {item.deadline}
-        </span>
-      </div>
-
-      <p className="mt-4 max-w-[40ch] text-[0.98rem] leading-7 text-ink/80">{item.summary}</p>
-
-      <div className="mt-5 flex flex-wrap gap-3 font-mono text-[11px] uppercase tracking-[0.14em] text-ink/70">
-        <span>{item.theme}</span>
-        <span>{item.format}</span>
-        <span>{item.location}</span>
-      </div>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {item.tech?.map((tag) => (
-          <span
-            key={tag}
-            className="border-2 border-dashed border-ink px-[9px] py-[6px] font-mono text-[11px] uppercase tracking-[0.14em]"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {item.note ? (
-        <p className="mt-5 inline-block rotate-[-1.4deg] border-2 border-ink bg-white px-[12px] py-[10px] font-mono text-[12px] leading-5 text-ink/80 shadow-brutal-sm">
-          {item.note}
-        </p>
-      ) : null}
-
-      <div className="mt-6 flex items-end justify-between gap-4 border-t-4 border-dashed border-ink pt-5">
-        <div>
-          <div className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-ink/65">
-            Prize
-          </div>
-          <div className="text-[2rem] font-bold tracking-[-0.06em]">{item.prize}</div>
         </div>
 
-        <Link className="rough-button" to={resolvedCtaTo}>
+        <p className="text-gray-400 text-sm mb-5 line-clamp-3">
+          {item.summary}
+        </p>
+
+        <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-gray-500 mb-4">
+          <span className="flex items-center">{item.theme}</span>
+          <span className="flex items-center">&bull;</span>
+          <span className="flex items-center">{item.format}</span>
+          <span className="flex items-center">&bull;</span>
+          <span className="flex items-center">{item.location}</span>
+        </div>
+
+        {item.tech && item.tech.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-4">
+            {item.tech.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center px-2 py-1 border border-gray-800 bg-transparent text-xs font-medium text-gray-400"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {item.note && (
+        <div className="border border-gray-700 p-3 mb-4 text-sm text-gray-300">
+          <span className="font-bold mr-2">Note:</span>
+          {item.note}
+        </div>
+      )}
+
+      <div className="mt-auto pt-5 border-t border-gray-800 flex items-center justify-between">
+        <div>
+          <div className="text-xs font-medium text-gray-500 uppercase tracking-wider mb-1">Prize</div>
+          <div className="text-lg font-bold text-white">{item.prize}</div>
+        </div>
+
+        <Link className="btn-secondary" to={resolvedCtaTo}>
           {ctaLabel}
         </Link>
       </div>

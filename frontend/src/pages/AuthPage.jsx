@@ -6,77 +6,69 @@ import { authReasons } from "../data/siteData";
 export default function AuthPage() {
   return (
     <PageLayout>
-      <section className="container-weird pt-[34px] sm:pt-[48px]">
-        <div className="grid items-start gap-8 xl:grid-cols-[1.02fr_0.98fr]">
-          <section className="space-y-6">
-            <article className="rough-panel rotate-[-1.2deg] bg-cherry p-[20px] text-paper sm:p-[28px]">
-              <p className="section-kicker text-paper/70">Account corner</p>
-              <h1 className="mt-4 max-w-[10ch] text-[clamp(2.8rem,8vw,5.5rem)] font-bold leading-[0.88] tracking-[-0.08em]">
-                Save the good ones before your brain drops the tab.
-              </h1>
-              <p className="mt-4 max-w-[38rem] text-[1rem] leading-8 text-paper/82">
-                Use Google if you want the quick route. We’re not pretending this needs a dramatic
-                onboarding journey.
-              </p>
-            </article>
+      <div className="min-h-[calc(100vh-16rem)] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <div className="flex flex-col justify-center">
+            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl mb-4">
+              Save the good ones.
+            </h1>
+            <p className="text-lg text-gray-400 mb-8">
+              Create an account to keep track of deadlines, save hackathons to your shortlist, and never lose that one perfect event you found at 2 AM.
+            </p>
 
-            <article className="rough-panel rotate-[1deg] bg-white p-[18px] sm:p-[24px]">
-              <p className="section-kicker">Why bother signing in</p>
-              <div className="mt-5 space-y-4">
-                {authReasons.map((reason, index) => (
-                  <div
-                    className={`border-4 border-ink p-[14px] font-mono text-[11px] uppercase leading-6 tracking-[0.12em] ${
-                      index === 1
-                        ? "ml-4 rotate-[1.2deg] bg-butter"
-                        : index === 2
-                          ? "rotate-[-1deg] bg-sky"
-                          : "rotate-[-0.6deg] bg-[#fff8ee]"
-                    }`}
-                    key={reason}
-                  >
-                    {reason}
+            <div className="space-y-4">
+              {authReasons.map((reason) => (
+                <div key={reason} className="flex items-start">
+                  <div className="flex-shrink-0">
+                    <svg className="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
-                ))}
-              </div>
-            </article>
-          </section>
+                  <p className="ml-3 text-base text-gray-300">{reason}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <section className="space-y-6">
-            <article className="rough-panel rotate-[-0.8deg] bg-[#fff8ee] p-[18px] sm:p-[24px]">
-              <p className="section-kicker">Fast route</p>
-              <h2 className="mt-3 text-[2.5rem] font-bold leading-[0.94] tracking-[-0.06em]">
-                Welcome back.
-              </h2>
-              <p className="mt-3 max-w-[30rem] text-[0.98rem] leading-7 text-ink/78">
-                Continue with Google to save hackathons, keep your shortlist, and revisit the ones
-                that looked promising at 1:12 AM.
-              </p>
-              <div className="mt-6 flex flex-col gap-3">
-                <GoogleButton>Continue with Google</GoogleButton>
-                <Link className="rough-button-dark" to="/explore">
-                  keep browsing as guest
-                </Link>
+          <div className="card p-8 sm:p-10 flex flex-col justify-center bg-black">
+            <h2 className="text-2xl font-bold text-white mb-2">
+              Welcome back
+            </h2>
+            <p className="text-gray-400 mb-8">
+              Sign in to continue to HackHunt.
+            </p>
+            
+            <div className="space-y-4">
+              <GoogleButton>Continue with Google</GoogleButton>
+              
+              <div className="relative mt-6 mb-6">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-800" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="bg-black px-2 text-gray-500">Or</span>
+                </div>
               </div>
-            </article>
 
-            <article className="rough-panel rotate-[1.4deg] bg-mint p-[18px] sm:p-[24px]">
-              <p className="section-kicker">No drama</p>
-              <p className="max-w-[30rem] text-[1rem] leading-8 text-ink/82">
-                This front-end includes the auth entry points and flow. The actual OAuth callback
-                wiring would be the next step once we connect a backend.
+              <Link className="btn-secondary w-full justify-center" to="/explore">
+                Continue as Guest
+              </Link>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-gray-800 text-center">
+              <p className="text-xs text-gray-500">
+                This is a demo frontend. Authentication is not actually connected.
               </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <Link className="rough-button" to="/">
-                  back home
-                </Link>
-                <Link className="rough-button-dark" to="/calendar">
-                  see the deadline wall
-                </Link>
-              </div>
-            </article>
-          </section>
+            </div>
+          </div>
+
         </div>
-      </section>
+      </div>
     </PageLayout>
   );
 }
+
+
+
+
