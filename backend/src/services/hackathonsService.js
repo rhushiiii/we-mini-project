@@ -34,7 +34,7 @@ function buildFilter(query = {}) {
     filter.theme = query.theme;
   }
 
-  if (query.format && ["remote", "irl", "hybrid"].includes(query.format)) {
+  if (query.format && ["Online", "Offline", "Hybrid"].includes(query.format)) {
     filter.format = query.format;
   }
 
@@ -127,7 +127,7 @@ export async function getFilters() {
   return {
     data: {
       themes: themes.filter(Boolean).sort((left, right) => left.localeCompare(right)),
-      formats: ["remote", "irl", "hybrid"],
+      formats: ["Online", "Offline", "Hybrid"],
       vibes: vibeTags.filter(Boolean).sort((left, right) => left.localeCompare(right))
     }
   };

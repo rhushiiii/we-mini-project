@@ -99,7 +99,7 @@ async function upsertHackathon(item) {
     sourceUrl: item.sourceUrl,
     canonicalUrl,
     theme: item.theme ?? inferThemeFromText(item.title, item.summary, item.description, ...(item.tags ?? []), ...(item.techStack ?? [])) ?? null,
-    format: item.format ?? "unknown",
+    format: item.format ?? "Unknown",
     location: item.location ?? null,
     country: item.country ?? null,
     timezone: item.timezone ?? null,

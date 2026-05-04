@@ -144,7 +144,7 @@ export default function ExplorePage() {
                       setPage(1);
                     })
                   }
-                  placeholder='Search "AI", "frontend", or "remote"'
+                  placeholder='Search "AI", "Frontend", or "Online"'
                   type="text"
                   value={query}
                 />
@@ -164,7 +164,7 @@ export default function ExplorePage() {
               </div>
 
               <div className="flex flex-wrap gap-2">
-                {["easy win", "mentor-heavy", "irl", "DevTools", "AI"].map((chip) => (
+                {["Beginner Friendly", "Mentorship", "Offline", "DevTools", "AI"].map((chip) => (
                   <button
                     key={chip}
                     className="inline-flex items-center px-3 py-1 bg-transparent border border-gray-800 text-gray-400 hover:border-gray-500 hover:text-white transition-colors"

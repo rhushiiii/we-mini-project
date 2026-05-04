@@ -2,98 +2,98 @@ export const navItems = [
   { label: "HOME", to: "/" },
   { label: "EXPLORE", to: "/explore" },
   { label: "CALENDAR", to: "/calendar" },
-  { label: "SAVED", to: "/auth" }
+  { label: "SAVED", to: "/calendar" }
 ];
 
 export const landingStats = [
-  { label: "Freshly indexed", value: "148", tone: "sky" },
-  { label: "Closing this week", value: "31", tone: "cherry" },
-  { label: "Total prize pool", value: "$2.4M", tone: "mint" },
-  { label: "Active builders", value: "4,200+", tone: "butter" }
+  { label: "Recently Added", value: "148", tone: "sky" },
+  { label: "Registration Closing Soon", value: "31", tone: "cherry" },
+  { label: "Total Prize Pool", value: "$2.4M", tone: "mint" },
+  { label: "Active Participants", value: "4,200+", tone: "butter" }
 ];
 
 export const heroScratchNotes = [
-  "No more finding a killer hackathon two hours after registrations closed.",
-  "Built for people who save links in random group chats and regret it later.",
-  "Yes, we also side-eye sites that hide the real deadline three clicks deep."
+  "Never miss an opportunity with real-time hackathon indexing.",
+  "A centralized platform to discover, track, and manage hackathon applications.",
+  "Transparent deadlines and clear event details, readily accessible."
 ];
 
 export const discoveryBlurbs = [
   {
-    title: "Search by panic level",
-    copy: "Type 'last date soon', 'AI', or 'remote only' and the board calms down a bit."
+    title: "Advanced Filtering",
+    copy: "Filter by deadline, format, and technical stack to find the right event."
   },
   {
-    title: "Find the easy wins",
-    copy: "Some events are glorious chaos. Others are a clean weekend build with a fair shot."
+    title: "Beginner-Friendly Events",
+    copy: "Discover hackathons tailored for newcomers with structured mentorship."
   },
   {
-    title: "Keep the weird ones",
-    copy: "Save the niche biohackathon in Lisbon before it disappears into your tabs."
+    title: "Specialized Categories",
+    copy: "Find niche hackathons focused on specific industries or unique technologies."
   }
 ];
 
 export const featuredHackathons = [
   {
     title: "Midnight API Jam",
-    host: "Postman x tiny teams club",
+    host: "Postman API Initiative",
     theme: "DevTools",
-    format: "remote",
-    location: "Remote / global",
+    format: "Online",
+    location: "Global / Remote",
     deadline: "Apply by Apr 10",
     prize: "$18k",
     summary:
-      "For builders who would rather demo a useful tool than pitch a grand vision deck at 2am.",
-    tags: ["🔥 trending", "easy win", "mentor-heavy"],
-    note: "The one people keep forwarding with 'this feels very buildable'.",
+      "A hackathon focused on developing practical developer tools and API integrations.",
+    tags: ["Trending", "Beginner Friendly", "Mentorship"],
+    note: "Excellent opportunity for backend developers to showcase utility.",
     tone: "peach",
     stamp: "cherry",
     tilt: "left"
   },
   {
     title: "Climate Sprint: Bengaluru",
-    host: "Open data folks + civic nerds",
+    host: "Open Data Foundation",
     theme: "Climate",
-    format: "irl",
+    format: "Offline",
     location: "Bengaluru, India",
     deadline: "Closes in 4 days",
     prize: "$25k",
     summary:
-      "Maps, sensors, ugly dashboards, useful outcomes. Very little fluff. Great coffee odds.",
-    tags: ["last date soon", "irl", "ships fast"],
-    note: "More prototypes, fewer vibe slides.",
+      "Develop solutions using environmental data sensors and urban dashboards for tangible impact.",
+    tags: ["Closing Soon", "Offline", "Rapid Prototyping"],
+    note: "Focused on functional prototypes and civic impact.",
     tone: "mint",
     stamp: "ink",
     tilt: "right"
   },
   {
     title: "Figma to Frontend Throwdown",
-    host: "Design engineers anonymous",
+    host: "Design Engineering Network",
     theme: "Design",
-    format: "hybrid",
-    location: "Remote + Berlin finals",
+    format: "Hybrid",
+    location: "Remote + Berlin Finals",
     deadline: "Starts Apr 18",
     prize: "$9k",
     summary:
-      "Perfect if your team has one design goblin, one CSS goblin, and a deadline addiction.",
-    tags: ["crowd favorite", "frontend", "weekend-sized"],
-    note: "Somebody will absolutely overdo the hover states.",
+      "A collaborative event connecting UI/UX designers with frontend developers.",
+    tags: ["Highly Rated", "Frontend", "Weekend Event"],
+    note: "Ideal for teams with strong design and implementation skills.",
     tone: "sky",
     stamp: "butter",
     tilt: "slightLeft"
   },
   {
     title: "LedgerLab Fintech Brawl",
-    host: "Three fintech APIs in a trench coat",
+    host: "Enterprise Financial Partners",
     theme: "FinTech",
-    format: "remote",
-    location: "Remote / APAC-friendly",
+    format: "Online",
+    location: "Global / Remote",
     deadline: "Shortlist on Friday",
     prize: "$42k",
     summary:
-      "Budgeting, invoicing, fraud alerts, money movement. Boring on paper, surprisingly winnable in practice.",
-    tags: ["easy win", "b2b weird", "quietly lucrative"],
-    note: "Serious prize pool, unserious branding. We respect that.",
+      "Build innovative solutions in budgeting, invoicing, and financial fraud detection.",
+    tags: ["Beginner Friendly", "B2B Focus", "High Prize Pool"],
+    note: "Substantial prize pool with a focus on practical business applications.",
     tone: "butter",
     stamp: "sky",
     tilt: "slightRight"
@@ -103,136 +103,136 @@ export const featuredHackathons = [
 export const exploreHackathons = [
   {
     title: "Midnight API Jam",
-    host: "Postman x tiny teams club",
+    host: "Postman API Initiative",
     theme: "DevTools",
-    format: "remote",
-    location: "Remote / global",
+    format: "Online",
+    location: "Global / Remote",
     deadline: "Apply by Apr 10",
     prize: "$18k",
     summary:
-      "Build the internal tool you wish existed yesterday. Judges love demos that save actual time.",
-    tags: ["🔥 trending", "easy win", "mentor-heavy"],
+      "Build internal tools and integrations that improve developer productivity.",
+    tags: ["Trending", "Beginner Friendly", "Mentorship"],
     tech: ["APIs", "React", "Node"],
-    note: "Strong chance of winning with a brutally useful product.",
+    note: "Strong potential for developing widely applicable utility products.",
     tone: "peach",
     stamp: "cherry",
     tilt: "left"
   },
   {
     title: "Climate Sprint: Bengaluru",
-    host: "Open data folks + civic nerds",
+    host: "Open Data Foundation",
     theme: "Climate",
-    format: "irl",
+    format: "Offline",
     location: "Bengaluru, India",
     deadline: "Closes in 4 days",
     prize: "$25k",
     summary:
-      "Local climate data, sensors, urban dashboards, and organizers who care more about outcomes than jargon.",
-    tags: ["last date soon", "irl", "ships fast"],
+      "Leverage local climate data and IoT sensors to build actionable urban dashboards.",
+    tags: ["Closing Soon", "Offline", "Rapid Prototyping"],
     tech: ["Maps", "Data Viz", "IoT"],
-    note: "Bring your own caffeine and a team that can ship by Sunday.",
+    note: "Intensive 48-hour development cycle focused on deliverables.",
     tone: "mint",
     stamp: "ink",
     tilt: "right"
   },
   {
     title: "Wallet UX Rescue Mission",
-    host: "Indie wallet founders",
+    host: "Blockchain Infrastructure Group",
     theme: "Web3",
-    format: "remote",
-    location: "Remote / EU-friendly",
+    format: "Online",
+    location: "Global / Remote",
     deadline: "Starts Apr 14",
     prize: "$12k",
     summary:
-      "Take a wallet flow from 'absolutely not' to 'my cousin could use this' without killing the fun.",
-    tags: ["frontend", "crowd favorite", "prototype-heavy"],
+      "Improve user experience and accessibility for decentralized wallet interfaces.",
+    tags: ["Frontend", "Highly Rated", "Prototype Focus"],
     tech: ["EVM", "UX", "TypeScript"],
-    note: "Rare Web3 event where UX is not an afterthought.",
+    note: "A unique Web3 event emphasizing usability and design.",
     tone: "sky",
     stamp: "butter",
     tilt: "slightLeft"
   },
   {
     title: "Figma to Frontend Throwdown",
-    host: "Design engineers anonymous",
+    host: "Design Engineering Network",
     theme: "Design",
-    format: "hybrid",
-    location: "Remote + Berlin finals",
+    format: "Hybrid",
+    location: "Remote + Berlin Finals",
     deadline: "Starts Apr 18",
     prize: "$9k",
     summary:
-      "A designer and a frontend dev walk into a challenge board and somehow leave as friends.",
-    tags: ["weekend-sized", "frontend", "easy win"],
+      "Bridging the gap between UI/UX design and frontend implementation.",
+    tags: ["Weekend Event", "Frontend", "Beginner Friendly"],
     tech: ["Figma", "CSS", "Motion"],
-    note: "The judges are picky in a useful way.",
+    note: "Judged on both visual fidelity and code quality.",
     tone: "butter",
     stamp: "sky",
     tilt: "slightRight"
   },
   {
     title: "LedgerLab Fintech Brawl",
-    host: "Three fintech APIs in a trench coat",
+    host: "Enterprise Financial Partners",
     theme: "FinTech",
-    format: "remote",
-    location: "Remote / APAC-friendly",
+    format: "Online",
+    location: "Global / Remote",
     deadline: "Shortlist on Friday",
     prize: "$42k",
     summary:
-      "Expense tooling, invoicing, fraud monitoring, and surprisingly generous office-hour support.",
-    tags: ["easy win", "quietly lucrative", "b2b weird"],
+      "Develop robust tools for expense tracking, invoicing, and fraud monitoring.",
+    tags: ["Beginner Friendly", "High Prize Pool", "B2B Focus"],
     tech: ["Payments", "Dashboards", "AI Ops"],
-    note: "Not flashy. Very practical. Prize pool says hello.",
+    note: "Highly practical applications with strong sponsor support.",
     tone: "peach",
     stamp: "ink",
     tilt: "flat"
   },
   {
-    title: "Campus AI Tiny Grant",
-    host: "A university lab with taste",
+    title: "Campus AI Innovation Grant",
+    host: "University Research Laboratory",
     theme: "AI",
-    format: "remote",
-    location: "Remote / student-led",
+    format: "Online",
+    location: "Global / Student-Focused",
     deadline: "Review every Monday",
     prize: "$6k",
     summary:
-      "Small teams, fast judging, no nonsense. Build one good AI feature and explain it like a human.",
-    tags: ["student-friendly", "easy win", "ships fast"],
+      "Build focused AI features with clear use cases and comprehensive evaluations.",
+    tags: ["Student-Friendly", "Beginner Friendly", "Rapid Prototyping"],
     tech: ["LLMs", "Python", "Evaluation"],
-    note: "Feels more like a makers grant than a spectacle.",
+    note: "An excellent entry-point for students working with machine learning.",
     tone: "mint",
     stamp: "cherry",
     tilt: "left"
   },
   {
     title: "CareStack Health Build",
-    host: "Doctors, operators, and one cursed spreadsheet",
+    host: "Healthcare Technology Consortium",
     theme: "Health",
-    format: "hybrid",
-    location: "Chennai + remote qualifiers",
+    format: "Hybrid",
+    location: "Chennai + Remote Qualifiers",
     deadline: "Closes in 8 days",
     prize: "$30k",
     summary:
-      "Patient ops, scheduling, care journeys, and the rare chance to build something painfully useful.",
-    tags: ["mentor-heavy", "hybrid", "real-users"],
+      "Create solutions for patient management, clinical workflows, and care journeys.",
+    tags: ["Mentorship", "Hybrid", "User-Centric"],
     tech: ["Analytics", "Workflow", "Mobile"],
-    note: "More messy than glamorous. Potentially high impact.",
+    note: "Opportunities for significant impact in healthcare operations.",
     tone: "sky",
     stamp: "cherry",
     tilt: "right"
   },
   {
-    title: "Offline City Quest",
-    host: "Civic hackers + local museums",
+    title: "Urban Heritage Tech Quest",
+    host: "Civic Technology Alliance",
     theme: "Culture",
-    format: "irl",
+    format: "Offline",
     location: "Pune, India",
     deadline: "Invite list on Apr 22",
     prize: "$7k",
     summary:
-      "Location-based clues, storytelling tech, odd interfaces, and one category dedicated to delightful nonsense.",
-    tags: ["irl", "crowd favorite", "weird in a good way"],
+      "Build location-based storytelling tools and interactive digital interfaces for cultural sites.",
+    tags: ["Offline", "Highly Rated", "Creative Focus"],
     tech: ["AR", "Maps", "Storytelling"],
-    note: "If your team likes making people smile, this is it.",
+    note: "Ideal for teams focused on interactive experiences and digital heritage.",
     tone: "blush",
     stamp: "ink",
     tilt: "slightLeft"
@@ -241,140 +241,77 @@ export const exploreHackathons = [
 
 export const themeFilters = ["All", "AI", "Web3", "Climate", "FinTech", "Design", "DevTools", "Health", "Culture"];
 
-export const formatFilters = ["All", "remote", "irl", "hybrid"];
+export const formatFilters = ["All", "Online", "Offline", "Hybrid"];
 
-export const vibeFilters = ["All", "easy win", "last date soon", "mentor-heavy", "crowd favorite"];
+export const vibeFilters = ["All", "Beginner Friendly", "Closing Soon", "Mentorship", "Highly Rated"];
 
 export const spotlightHackathon = {
   title: "Midnight API Jam",
-  subtitle: "For teams who like practical demos more than dramatic pitch decks.",
-  host: "Postman x tiny teams club",
-  location: "Remote / global",
-  format: "Remote",
+  subtitle: "Focused on practical API integrations and developer tooling.",
+  host: "Postman API Initiative",
+  location: "Global / Remote",
+  format: "Online",
   deadline: "April 10, 2026",
   buildWindow: "48 focused hours",
   prize: "$18,000",
   team: "Solo to 4 people",
   whyItHits:
-    "This is the kind of event where a sharp problem statement, a useful product, and a fast demo can beat louder teams. Nobody is asking for a metaverse here. Bless.",
+    "This event rewards teams capable of identifying precise technical challenges and delivering functional, targeted solutions within a strict timeframe.",
   description:
-    "The challenge board is centered on ugly, useful tooling: API explorers, internal dashboards, onboarding helpers, debugging assistants, and tiny workflow automations that make developers mutter 'okay, wait, this is actually good.'",
-  tags: ["🔥 trending", "easy win", "mentor-heavy", "remote only"],
+    "The competition challenges participants to develop impactful developer utilities, such as API explorers, monitoring dashboards, onboarding automation, and debugging assistants.",
+  tags: ["Trending", "Beginner Friendly", "Mentorship", "Online"],
   tracks: [
-    "Best tool for exhausted developers",
-    "Fastest demo-to-value ratio",
-    "Most useful AI sidekick for API work"
+    "Best Developer Productivity Tool",
+    "Fastest Implementation-to-Value",
+    "Most Innovative AI Assistant"
   ],
   timeline: [
-    { label: "Warm-up call", value: "Apr 8 / 8:30 PM IST" },
-    { label: "Build weekend", value: "Apr 11 to Apr 12" },
-    { label: "Live demos", value: "Apr 13 / rolling rooms" }
+    { label: "Kickoff Call", value: "Apr 8 / 8:30 PM IST" },
+    { label: "Development Phase", value: "Apr 11 to Apr 12" },
+    { label: "Live Demonstrations", value: "Apr 13 / rolling sessions" }
   ],
   perks: [
-    "Judges give product feedback instead of vague vibes.",
-    "Mentor hours are stacked in APAC and Europe, not just US evenings.",
-    "Winning teams get intro calls with actual devtools operators."
+    "Comprehensive product feedback from industry experts.",
+    "Global mentorship availability across multiple time zones.",
+    "Networking opportunities with leading platform engineering teams."
   ]
 };
 
 export const recommendedHackathons = [
   {
-    title: "Campus AI Tiny Grant",
-    host: "A university lab with taste",
+    title: "Campus AI Innovation Grant",
+    host: "University Research Laboratory",
     theme: "AI",
-    format: "remote",
-    location: "Remote / student-led",
+    format: "Online",
+    location: "Global / Student-Focused",
     deadline: "Review every Monday",
     prize: "$6k",
-    summary: "Small, clean scope. Great if you want one polished AI feature and a fair shot.",
-    tags: ["student-friendly", "easy win"],
-    note: "Surprisingly kind judging rubric.",
+    summary: "A focused scope intended for well-designed, single-purpose AI applications.",
+    tags: ["Student-Friendly", "Beginner Friendly"],
+    note: "Transparent and accessible evaluation criteria.",
     tone: "mint",
     stamp: "cherry",
     tilt: "slightRight"
   },
   {
     title: "Wallet UX Rescue Mission",
-    host: "Indie wallet founders",
+    host: "Blockchain Infrastructure Group",
     theme: "Web3",
-    format: "remote",
-    location: "Remote / EU-friendly",
+    format: "Online",
+    location: "Global / Remote",
     deadline: "Starts Apr 14",
     prize: "$12k",
-    summary: "A cleaner, more opinionated challenge if your team lives in frontend and flow design.",
-    tags: ["frontend", "crowd favorite"],
-    note: "Good chaos. Not scammy chaos.",
+    summary: "A specialized challenge aimed at frontend engineers and product designers.",
+    tags: ["Frontend", "Highly Rated"],
+    note: "A unique opportunity to influence decentralized application standards.",
     tone: "sky",
     stamp: "butter",
     tilt: "left"
   }
 ];
 
-export const calendarDays = [
-  { day: "", ghost: true },
-  { day: "", ghost: true },
-  { day: "1" },
-  { day: "2", event: "Mentor signup", tone: "sky" },
-  { day: "3" },
-  { day: "4", event: "Wallet UX opens", tone: "butter" },
-  { day: "5" },
-  { day: "6" },
-  { day: "7", event: "Campus AI review", tone: "mint" },
-  { day: "8" },
-  { day: "9" },
-  { day: "10", event: "Midnight API closes", tone: "cherry", focus: true },
-  { day: "11" },
-  { day: "12", event: "Climate Sprint shortlist", tone: "mint" },
-  { day: "13" },
-  { day: "14", event: "Wallet UX kickoff", tone: "sky" },
-  { day: "15" },
-  { day: "16" },
-  { day: "17", event: "Health Build Q&A", tone: "peach" },
-  { day: "18" },
-  { day: "19" },
-  { day: "20" },
-  { day: "21", event: "Campus AI review", tone: "mint" },
-  { day: "22", event: "City Quest invites", tone: "butter" },
-  { day: "23" },
-  { day: "24" },
-  { day: "25" },
-  { day: "26" },
-  { day: "27" },
-  { day: "28", event: "CareStack demos", tone: "sky" },
-  { day: "29" },
-  { day: "30" },
-  { day: "", ghost: true },
-  { day: "", ghost: true },
-  { day: "", ghost: true }
-];
-
-export const calendarHighlights = [
-  {
-    date: "Apr 10",
-    title: "Midnight API Jam closes",
-    copy: "If you're applying, do not be heroic at 11:58 PM. Upload earlier."
-  },
-  {
-    date: "Apr 14",
-    title: "Wallet UX kickoff",
-    copy: "Great one for design-engineering duos who want a more visual challenge."
-  },
-  {
-    date: "Apr 22",
-    title: "Offline City Quest invites",
-    copy: "Weird, local, and memorable. Exactly the kind of event that disappears from the internet."
-  }
-];
-
-export const authReasons = [
-  "Save weird niche events before they vanish into 12 open tabs.",
-  "Keep your shortlist, deadlines, and 'maybe this weekend' plans in one place.",
-  "Apply faster when a good hackathon suddenly announces a cutoff."
-];
-
 export const footerLinks = [
   { label: "Explore", to: "/explore" },
   { label: "Calendar", to: "/calendar" },
-  { label: "Details", to: "/details" },
-  { label: "Log in", to: "/auth" }
+  { label: "Details", to: "/details" }
 ];

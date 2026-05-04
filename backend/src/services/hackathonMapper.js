@@ -1,13 +1,16 @@
 import { formatLabelFromDate } from "../scrapers/utils.js";
 
-const FORMAT_MAP = {
-  remote: "remote",
-  irl: "irl",
-  hybrid: "hybrid",
-  unknown: "unknown"
-};
-
 export function mapHackathonToApi(item) {
+  let parsedDeadline = null;
+  if (item.deadline instanceof Date && !Number.isNaN(item.deadline.getTime())) {
+    parsedDeadline = item.deadline.toISOString();
+  } else if (typeof item.deadline === 'string' || typeof item.deadline === 'number') {
+    const d = new Date(item.deadline);
+    if (!Number.isNaN(d.getTime())) {
+      parsedDeadline = d.toISOString();
+    }
+  }
+
   return {
     id: String(item._id),
     slug: item.slug,
@@ -16,9 +19,9 @@ export function mapHackathonToApi(item) {
     summary: item.summary ?? null,
     description: item.description ?? null,
     theme: item.theme ?? null,
-    format: FORMAT_MAP[item.format] ?? "unknown",
+    format: item.format ?? "Unknown",
     location: item.location ?? null,
-    deadline: item.deadline ? item.deadline.toISOString() : null,
+    deadline: parsedDeadline,
     deadlineLabel: formatLabelFromDate(item.deadline),
     prize: item.prizeLabel ?? null,
     tags: Array.isArray(item.tags) ? item.tags : [],

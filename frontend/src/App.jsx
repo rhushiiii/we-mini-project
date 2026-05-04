@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import AuthPage from "./pages/AuthPage";
+
 import CalendarPage from "./pages/CalendarPage";
 import DetailsPage from "./pages/DetailsPage";
 import ExplorePage from "./pages/ExplorePage";
@@ -25,7 +25,7 @@ export default function App() {
       <Route path="/calendar" element={<CalendarPage />} />
       <Route path="/details/:slug" element={<DetailsPage />} />
       <Route path="/details" element={<DetailsPage />} />
-      <Route path="/auth" element={<AuthPage />} />
+
     </Routes>
   );
 }

@@ -51,7 +51,7 @@ export class DevfolioScraper extends BaseScraper {
         summary: sanitizeText(card.find("p").first().text()) ?? textBlock.slice(0, 260),
         description: sanitizeText(card.find("[class*='description']").first().text()),
         theme: inferThemeFromText(title, textBlock),
-        format: /offline|in-person/i.test(textBlock) ? "irl" : /hybrid/i.test(textBlock) ? "hybrid" : /online|remote/i.test(textBlock) ? "remote" : "unknown",
+        format: /offline|in-person/i.test(textBlock) ? "Offline" : /hybrid/i.test(textBlock) ? "Hybrid" : /online|remote/i.test(textBlock) ? "Online" : "Unknown",
         location: sanitizeText(card.find("[class*='location']").first().text()),
         deadline,
         startDate,

@@ -125,12 +125,12 @@ export function inferTechStack(...parts) {
 export function inferTags(...parts) {
   const joined = parts.filter(Boolean).join(" ").toLowerCase();
   const tags = [];
-  if (/student|campus|college|university/.test(joined)) tags.push("student-friendly");
-  if (/beginner|starter|easy/.test(joined)) tags.push("easy win");
-  if (/mentor/.test(joined)) tags.push("mentor-heavy");
-  if (/featured|trending|popular/.test(joined)) tags.push("crowd favorite");
-  if (/online|remote/.test(joined)) tags.push("remote");
-  if (/hybrid/.test(joined)) tags.push("hybrid");
+  if (/student|campus|college|university/.test(joined)) tags.push("Student-Friendly");
+  if (/beginner|starter|easy/.test(joined)) tags.push("Beginner Friendly");
+  if (/mentor/.test(joined)) tags.push("Mentorship");
+  if (/featured|trending|popular/.test(joined)) tags.push("Highly Rated");
+  if (/online|remote/.test(joined)) tags.push("Online");
+  if (/hybrid/.test(joined)) tags.push("Hybrid");
   return [...new Set(tags)];
 }
 

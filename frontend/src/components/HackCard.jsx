@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useSavedHackathons } from "../hooks/useSavedHackathons";
 
 export default function HackCard({
   item,
@@ -8,6 +9,17 @@ export default function HackCard({
   className = ""
 }) {
   const resolvedCtaTo = ctaTo ?? (item.slug ? `/details/${item.slug}` : "/details");
+  const { isSaved, saveHackathon, unsaveHackathon } = useSavedHackathons();
+  const saved = isSaved(item.id);
+
+  const handleSaveToggle = (e) => {
+    e.preventDefault();
+    if (saved) {
+      unsaveHackathon(item.id);
+    } else {
+      saveHackathon(item);
+    }
+  };
 
   return (
     <article className={`card flex flex-col p-6 transition-colors hover:border-gray-500 ${className}`}>
@@ -32,7 +44,7 @@ export default function HackCard({
         
         <div className="text-sm font-medium text-gray-300 mb-4 flex items-center gap-2">
           <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-          {item.deadline}
+          {item.deadlineLabel || item.deadline}
         </div>
 
         <p className="text-gray-400 text-sm mb-5 line-clamp-3">
@@ -74,9 +86,25 @@ export default function HackCard({
           <div className="text-lg font-bold text-white">{item.prize}</div>
         </div>
 
-        <Link className="btn-secondary" to={resolvedCtaTo}>
-          {ctaLabel}
-        </Link>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleSaveToggle}
+            type="button"
+            className={`p-2 rounded-full border transition-colors ${
+              saved 
+                ? "bg-white text-black border-white hover:bg-gray-200" 
+                : "bg-transparent text-gray-400 border-gray-700 hover:text-white hover:border-gray-500"
+            }`}
+            aria-label={saved ? "Unsave" : "Save"}
+          >
+            <svg className="w-5 h-5" fill={saved ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+            </svg>
+          </button>
+          <Link className="btn-secondary" to={resolvedCtaTo}>
+            {ctaLabel}
+          </Link>
+        </div>
       </div>
     </article>
   );

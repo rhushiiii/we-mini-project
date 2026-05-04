@@ -51,7 +51,7 @@ export class UnstopScraper extends BaseScraper {
         summary: sanitizeText(card.find("p").first().text()) ?? textBlock.slice(0, 240),
         description: sanitizeText(card.find("[class*='description']").first().text()),
         theme: inferThemeFromText(title, textBlock),
-        format: /hybrid/i.test(textBlock) ? "hybrid" : /online|remote/i.test(textBlock) ? "remote" : /offline|onsite|in-person/i.test(textBlock) ? "irl" : "unknown",
+        format: /hybrid/i.test(textBlock) ? "Hybrid" : /online|remote/i.test(textBlock) ? "Online" : /offline|onsite|in-person/i.test(textBlock) ? "Offline" : "Unknown",
         location: sanitizeText(card.find("[class*='location']").first().text()) ?? (/india/i.test(textBlock) ? "India" : undefined),
         deadline,
         startDate,

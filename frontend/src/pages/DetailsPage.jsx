@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import HackCard from "../components/HackCard";
 import PageLayout from "../components/PageLayout";
 import { recommendedHackathons, spotlightHackathon } from "../data/siteData";
+import { useSavedHackathons } from "../hooks/useSavedHackathons";
 import {
   fetchHackathonBySlug,
   fetchTrendingHackathons,
@@ -15,6 +16,32 @@ export default function DetailsPage() {
   const [recommended, setRecommended] = useState(recommendedHackathons);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const { isSaved, saveHackathon, unsaveHackathon } = useSavedHackathons();
+  
+  // Create a display-safe spotlight object, ensuring we don't crash on undefined
+  const displaySpotlight = useMemo(() => spotlight, [spotlight]);
+  const saved = displaySpotlight.id ? isSaved(displaySpotlight.id) : false;
+
+  const handleSaveToggle = () => {
+    if (saved) {
+      unsaveHackathon(displaySpotlight.id);
+    } else {
+      saveHackathon({
+        id: displaySpotlight.id,
+        slug: displaySpotlight.slug,
+        title: displaySpotlight.title,
+        host: displaySpotlight.host,
+        summary: displaySpotlight.subtitle,
+        theme: displaySpotlight.theme,
+        format: displaySpotlight.format,
+        location: displaySpotlight.location,
+        deadline: displaySpotlight.rawDeadline, // Make sure we store raw deadline for calendar
+        prize: displaySpotlight.prize,
+        tags: displaySpotlight.tags,
+        tech: displaySpotlight.tech
+      });
+    }
+  };
 
   useEffect(() => {
     let active = true;
@@ -76,8 +103,6 @@ export default function DetailsPage() {
     };
   }, [slug]);
 
-  const displaySpotlight = useMemo(() => spotlight, [spotlight]);
-
   return (
     <PageLayout>
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
@@ -122,9 +147,13 @@ export default function DetailsPage() {
               </div>
 
               <div className="flex flex-wrap gap-4 pt-6 border-t border-gray-800">
-                <Link className="btn-primary" to="/auth">
-                  Save Hackathon
-                </Link>
+                <button 
+                  onClick={handleSaveToggle}
+                  className={saved ? "btn-secondary" : "btn-primary"}
+                  type="button"
+                >
+                  {saved ? "Saved to Calendar" : "Save to Calendar"}
+                </button>
                 <Link className="btn-secondary" to="/explore">
                   Back to Board
                 </Link>
@@ -260,7 +289,12 @@ function buildSpotlight(item) {
       "Structured challenge format and clear deliverables.",
       "Direct source link preserved for official updates.",
       "Indexed with ranking signals for easier shortlist decisions."
-    ]
+    ],
+    id: item.id,
+    slug: item.slug,
+    theme: item.theme,
+    rawDeadline: item.deadline,
+    tech: item.tech
   };
 }
 
